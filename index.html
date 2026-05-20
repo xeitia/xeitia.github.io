@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Xeitia — Agentes IA para tu negocio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #1a1a2e;
+            background: #f8f9fc;
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            background: rgba(255,255,255,.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            padding: 0 2rem;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -.02em;
+            background: linear-gradient(135deg, #6c63ff, #e04e92);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+            font-size: .9rem;
+            transition: color .2s;
+        }
+
+        .nav-links a:hover { color: #6c63ff; }
+
+        .btn-cta {
+            background: #6c63ff;
+            color: #fff !important;
+            padding: .5rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background .2s, transform .2s;
+        }
+
+        .btn-cta:hover { background: #5a52e0; transform: translateY(-1px); }
+
+        /* --- Hero --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, #f8f9fc 0%, #eef0ff 50%, #fce4ec 100%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            max-width: 750px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #6c63ff, #e04e92);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #555;
+            max-width: 580px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: #6c63ff;
+            color: #fff;
+            padding: .85rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: background .2s, transform .2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover { background: #5a52e0; transform: translateY(-2px); }
+
+        .btn-secondary {
+            background: #fff;
+            color: #1a1a2e;
+            padding: .85rem 2rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 1px solid #ddd;
+            transition: border .2s, transform .2s;
+        }
+
+        .btn-secondary:hover { border-color: #6c63ff; transform: translateY(-2px); }
+
+        /* --- Sections --- */
+        section { padding: 5rem 2rem; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: .6rem;
+        }
+
+        .section-sub {
+            text-align: center;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 3.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* --- Services --- */
+        #servicios { background: #fff; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #f8f9fc;
+            padding: 2rem;
+            border-radius: 16px;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.08); }
+
+        .service-icon {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: .6rem;
+            font-weight: 700;
+        }
+
+        .service-card p { color: #555; font-size: .92rem; }
+
+        /* --- How it works --- */
+        #como-funciona { background: linear-gradient(135deg, #f8f9fc 0%, #eef0ff 100%); }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            counter-reset: step;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .step-num {
+            width: 48px; height: 48px;
+            background: #6c63ff;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .step h3 { font-size: 1.1rem; margin-bottom: .5rem; font-weight: 700; }
+        .step p { color: #555; font-size: .9rem; }
+
+        /* --- Pricing --- */
+        #precios { background: #fff; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .pricing-card {
+            border: 1px solid #eaeaea;
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform .2s, box-shadow .2s;
+        }
+
+        .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.08); }
+
+        .pricing-card.featured {
+            border-color: #6c63ff;
+            box-shadow: 0 0 0 2px #6c63ff;
+            position: relative;
+        }
+
+        .pricing-card.featured::before {
+            content: 'Recomendado';
+            position: absolute;
+            top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: #6c63ff;
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 700;
+            padding: .25rem 1rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: .5rem;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: .5rem 0;
+        }
+
+        .price small {
+            font-size: .8rem;
+            font-weight: 400;
+            color: #888;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .pricing-card ul li {
+            padding: .4rem 0;
+            font-size: .9rem;
+            color: #555;
+        }
+
+        .pricing-card ul li::before { content: '✓ '; color: #6c63ff; font-weight: 700; }
+
+        /* --- Contact --- */
+        #contacto { background: linear-gradient(135deg, #eef0ff 0%, #fce4ec 100%); }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content p {
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+            align-items: center;
+        }
+
+        .contact-links a {
+            color: #6c63ff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+
+        .contact-links a:hover { text-decoration: underline; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            font-size: .85rem;
+            color: #888;
+            border-top: 1px solid #eaeaea;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 640px) {
+            nav { padding: 0 1rem; }
+            .nav-links { gap: 1rem; }
+            .nav-links a { font-size: .8rem; }
+            section { padding: 3rem 1.2rem; }
+        }
+
+        /* --- Animations --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn .6s ease forwards;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+        .fade-in:nth-child(2) { animation-delay: .1s; }
+        .fade-in:nth-child(3) { animation-delay: .2s; }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <span class="logo">XEITIA</span>
+        <ul class="nav-links">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#precios">Precios</a></li>
+            <li><a href="#contacto" class="btn-cta">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <h1 class="fade-in">Tu negocio habla,<br/>nosotros <span>lo entendemos</span></h1>
+        <p class="fade-in">Agentes de inteligencia artificial para PYMES. Atención automatizada, pedidos sin esfuerzo, clientes más felices.</p>
+        <div class="hero-buttons fade-in">
+            <a href="#contacto" class="btn-primary">Quiero una demo</a>
+            <a href="#servicios" class="btn-secondary">Ver servicios</a>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="servicios">
+        <div class="container">
+            <h2 class="section-title">Servicios</h2>
+            <p class="section-sub">Automatizamos la comunicación con tus clientes sin perder el trato humano.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🤖</div>
+                    <h3>Asistente virtual para hostelería</h3>
+                    <p>Gestiona reservas, pedidos y consultas por WhatsApp. Tu cliente chatea, tú cocinas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📞</div>
+                    <h3>Atención al cliente 24/7</h3>
+                    <p>Resuelve dudas frecuentes, horarios, precios y más sin depender de horarios comerciales.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3>Automatización de procesos</h3>
+                    <p>Desde la toma de pedidos hasta la generación de informes. Tu negocio funcionando solo.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Agentes a medida</h3>
+                    <p>Analizamos tu negocio y creamos un agente IA entrenado con tu información y tus reglas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔌</div>
+                    <h3>Integración con tus herramientas</h3>
+                    <p>Conectamos el agente con tu calendario, CRM, redes sociales o sistema de pedidos.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Hosting y mantenimiento</h3>
+                    <p>Nos encargamos de que todo funcione. Tú solo tienes que atender a tus clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="como-funciona">
+        <div class="container">
+            <h2 class="section-title">Cómo funciona</h2>
+            <p class="section-sub">En menos de una semana tienes tu agente IA operativo.</p>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>Analizamos tu negocio</h3>
+                    <p>Vemos qué procesos se pueden automatizar y cómo encaja un agente IA en tu día a día.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>Creamos el agente</h3>
+                    <p>Entrenamos al agente con tu carta, horarios, precios y reglas de negocio.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>Probamos juntos</h3>
+                    <p>Te damos una demo para que lo pruebes en tiempo real y ajustamos lo que haga falta.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h3>Lo lanzamos</h3>
+                    <p>Activamos el agente en WhatsApp y Telegram. A partir de ahí, trabaja por ti.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="precios">
+        <div class="container">
+            <h2 class="section-title">Planes</h2>
+            <p class="section-sub">Sin letra pequeña. Precios claros para que solo pienses en tu negocio.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Startup</h3>
+                    <div class="price">49€ <small>/mes</small></div>
+                    <ul>
+                        <li>1 agente IA</li>
+                        <li>WhatsApp o Telegram</li>
+                        <li>Hasta 500 conversaciones/mes</li>
+                        <li>Soporte por email</li>
+                    </ul>
+                    <a href="#contacto" class="btn-secondary" style="display:inline-block">Empezar</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <div class="price">99€ <small>/mes</small></div>
+                    <ul>
+                        <li>1 agente IA</li>
+                        <li>WhatsApp + Telegram</li>
+                        <li>Conversaciones ilimitadas</li>
+                        <li>Integraciones (calendario, API)</li>
+                        <li>Soporte prioritario</li>
+                    </ul>
+                    <a href="#contacto" class="btn-primary" style="display:inline-block">Quiero Pro</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">A medida</div>
+                    <ul>
+                        <li>Múltiples agentes</li>
+                        <li>Canales personalizados</li>
+                        <li>API dedicada</li>
+                        <li>Hosting propio</li>
+                        <li>Soporte 24/7</li>
+                    </ul>
+                    <a href="#contacto" class="btn-secondary" style="display:inline-block">Contactar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contacto">
+        <div class="container contact-content">
+            <h2 class="section-title">Hablemos</h2>
+            <p>Cuéntanos qué necesitas y te preparamos una demo sin compromiso.</p>
+            <div class="contact-links">
+                <a href="mailto:info@xeitia.es">✉️ info@xeitia.es</a>
+                <a href="https://wa.me/34611553428" target="_blank">📱 Escríbenos por WhatsApp</a>
+                <a href="#">🌐 @xeitia (próximamente)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Xeitia — Consultoría de Agentes IA. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
