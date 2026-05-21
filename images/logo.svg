@@ -1,0 +1,9 @@
+<svg width="520" height="160" viewBox="0 0 680 200" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Xeitia — Logo versión principal</title>
+  <rect width="680" height="200" fill="#FFFFFF"/>
+  <path d="M 158,44 C 144,84 60,116 46,156" stroke="#140E3A" stroke-width="23" stroke-linecap="round" fill="none"/>
+  <path d="M 46,44 C 60,84 144,116 158,156" stroke="#5B4AF7" stroke-width="23" stroke-linecap="round" fill="none"/>
+  <line x1="186" y1="46" x2="186" y2="154" stroke="#D4D0F0" stroke-width="0.5"/>
+  <text x="206" y="116" font-family="'Gill Sans','Gill Sans MT','Century Gothic','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="58" font-weight="300" letter-spacing="11" fill="#140E3A">XEITIA</text>
+  <text x="208" y="141" font-family="'Gill Sans','Gill Sans MT','Century Gothic','Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" font-weight="500" letter-spacing="6.5" fill="#5B4AF7">AGENTES IA</text>
+</svg>
