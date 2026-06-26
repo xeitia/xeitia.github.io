@@ -267,6 +267,116 @@
         }
 
         .service-card p { color: #555; font-size: .92rem; }
+        .service-card .card-cta {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #6c63ff;
+            font-weight: 600;
+            font-size: .88rem;
+            text-decoration: none;
+            transition: gap .2s;
+        }
+        .service-card .card-cta:hover { text-decoration: underline; }
+
+        /* --- Stage layout (Capta → Convierte → Fideliza) --- */
+        .stage {
+            margin-bottom: 3.5rem;
+        }
+        .stage:last-child { margin-bottom: 0; }
+
+        .stage-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: .5rem;
+        }
+        .stage-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #6c63ff;
+            color: #fff;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: .95rem;
+            flex-shrink: 0;
+        }
+        .stage-header h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        .stage-header h3 span {
+            font-weight: 400;
+            color: #888;
+        }
+        .stage-desc {
+            color: #666;
+            font-size: .95rem;
+            margin: 0 0 1.5rem 2.8rem;
+        }
+        .stage-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* --- Contact Form --- */
+        .contact-form {
+            max-width: 480px;
+            margin: 2rem auto 0;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: .85rem;
+            margin-bottom: .3rem;
+            color: #444;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: .75rem 1rem;
+            border: 1.5px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: .95rem;
+            transition: border-color .2s;
+            background: #fff;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #6c63ff;
+        }
+        .form-group textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+        .btn-form {
+            width: 100%;
+            background: #6c63ff;
+            color: #fff;
+            padding: .85rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background .2s, transform .2s;
+        }
+        .btn-form:hover { background: #5a52e0; transform: translateY(-1px); }
+        .form-note {
+            text-align: center;
+            font-size: .8rem;
+            color: #999;
+            margin-top: .6rem;
+        }
 
         /* --- How it works --- */
         #como-funciona { background: linear-gradient(135deg, #f8f9fc 0%, #eef0ff 100%); }
@@ -565,42 +675,80 @@
     <section id="servicios">
         <div class="container">
             <h2 class="section-title">Servicios</h2>
-            <p class="section-sub">Automatizamos la comunicación con tus clientes sin perder el trato humano. Tu agente habla su idioma, entiende su negocio y cuida tu reputación.</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🍽️</div>
-                    <h3>Tu empleado digital</h3>
-                    <p>Habla 26 idiomas, gestiona pedidos y reservas por WhatsApp. Tu cliente chatea, tú cocinas. Sin instalar nada.</p>
+            <p class="section-sub">Automatizamos cada etapa de la relación con tus clientes. Desde que llegan hasta que vuelven.</p>
+
+            <!-- Stage 1: Capta -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-num">1</span>
+                    <h3>Capta <span>leads sin esfuerzo</span></h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3>Recupera el 30% de reservas perdidas</h3>
-                    <p>Resuelve dudas frecuentes, horarios y precios 24/7. Nunca más pierdas un cliente por no contestar a tiempo.</p>
+                <p class="stage-desc">Atrae y capta clientes potenciales 24/7, en cualquier idioma, sin levantar la cabeza.</p>
+                <div class="stage-cards">
+                    <div class="service-card">
+                        <div class="service-icon">🍽️</div>
+                        <h3>Tu empleado digital</h3>
+                        <p>Habla 26 idiomas, gestiona pedidos y reservas por WhatsApp. Tu cliente chatea, tú cocinas. Sin instalar nada.</p>
+                        <a href="#contacto" class="card-cta">Saber más →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🛠️</div>
+                        <h3>Agentes a tu medida</h3>
+                        <p>Analizamos tu negocio y creamos un agente entrenado con tu información, tus reglas y tu tono.</p>
+                        <a href="#contacto" class="card-cta">Saber más →</a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">⭐</div>
-                    <h3>Convierte cada cliente en reseña 5★</h3>
-                    <p>Atiende a clientes insatisfechos antes de que opinen, pide reseñas a los satisfechos y responde automáticamente en Google.</p>
+            </div>
+
+            <!-- Stage 2: Convierte -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-num">2</span>
+                    <h3>Convierte <span>más reservas y ventas</span></h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>Tu negocio funcionando solo</h3>
-                    <p>Desde la toma de pedidos hasta la generación de informes. Automatización que trabaja por ti 24/7.</p>
+                <p class="stage-desc">Cierra más conversaciones automatizando respuestas, recuperando reservas perdidas y conectando con tus herramientas.</p>
+                <div class="stage-cards">
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Recupera el 30% de reservas perdidas</h3>
+                        <p>Resuelve dudas frecuentes, horarios y precios 24/7. Nunca más pierdas un cliente por no contestar a tiempo.</p>
+                        <a href="#contacto" class="card-cta">Saber más →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🤖</div>
+                        <h3>Tu negocio funcionando solo</h3>
+                        <p>Desde la toma de pedidos hasta la generación de informes. Automatización que trabaja por ti 24/7.</p>
+                        <a href="#contacto" class="card-cta">Saber más →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔌</div>
+                        <h3>Integración con tus herramientas</h3>
+                        <p>Conectamos el agente con tu calendario, CRM, redes sociales o sistema de pedidos.</p>
+                        <a href="#contacto" class="card-cta">Saber más →</a>
+                    </div>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🛠️</div>
-                    <h3>Agentes a tu medida</h3>
-                    <p>Analizamos tu negocio y creamos un agente entrenado con tu información, tus reglas y tu tono.</p>
+            </div>
+
+            <!-- Stage 3: Fideliza -->
+            <div class="stage">
+                <div class="stage-header">
+                    <span class="stage-num">3</span>
+                    <h3>Fideliza <span>clientes que vuelven</span></h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🔌</div>
-                    <h3>Integración con tus herramientas</h3>
-                    <p>Conectamos el agente con tu calendario, CRM, redes sociales o sistema de pedidos.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3>Hosting y mantenimiento</h3>
-                    <p>Nos encargamos de que todo funcione 24/7. Tú solo tienes que atender a tus clientes.</p>
+                <p class="stage-desc">Convierte clientes satisfechos en reseñas 5★ y construye relaciones que duran.</p>
+                <div class="stage-cards">
+                    <div class="service-card">
+                        <div class="service-icon">⭐</div>
+                        <h3>Convierte cada cliente en reseña 5★</h3>
+                        <p>Atiende a clientes insatisfechos antes de que opinen, pide reseñas a los satisfechos y responde automáticamente en Google.</p>
+                        <a href="#contacto" class="card-cta">Saber más →</a>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">⚡</div>
+                        <h3>Hosting y mantenimiento</h3>
+                        <p>Nos encargamos de que todo funcione 24/7. Tú solo tienes que atender a tus clientes.</p>
+                        <a href="#contacto" class="card-cta">Saber más →</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -704,13 +852,53 @@
         <div class="container contact-content">
             <h2 class="section-title">Hablemos</h2>
             <p>Cuéntanos qué necesitas y te preparamos una demo sin compromiso.</p>
-            <div class="contact-links">
+
+            <form class="contact-form" id="contactForm" onsubmit="return sendContactForm(event)">
+                <div class="form-group">
+                    <label for="form-name">Nombre *</label>
+                    <input type="text" id="form-name" name="nombre" required placeholder="Tu nombre" />
+                </div>
+                <div class="form-group">
+                    <label for="form-email">Email</label>
+                    <input type="email" id="form-email" name="email" placeholder="tu@email.com" />
+                </div>
+                <div class="form-group">
+                    <label for="form-phone">Teléfono *</label>
+                    <input type="tel" id="form-phone" name="telefono" required placeholder="+34 600 000 000" />
+                </div>
+                <div class="form-group">
+                    <label for="form-msg">¿Qué necesitas?</label>
+                    <textarea id="form-msg" name="mensaje" placeholder="Cuéntanos tu negocio y qué te gustaría automatizar..."></textarea>
+                </div>
+                <button type="submit" class="btn-form">📱 Enviar por WhatsApp</button>
+                <p class="form-note">Te respondemos en menos de 24h • Sin compromiso</p>
+            </form>
+
+            <div class="contact-links" style="margin-top:2rem;padding-top:2rem;border-top:1px solid #ddd;">
                 <a href="mailto:info@xeitia.es">✉️ info@xeitia.es</a>
-                <a href="https://wa.me/34611553428" target="_blank">📱 Escríbenos por WhatsApp</a>
                 <a href="https://instagram.com/xeitia" target="_blank" rel="noopener">🌐 @xeitia en Instagram</a>
             </div>
         </div>
     </section>
+
+    <script>
+    function sendContactForm(e) {
+        e.preventDefault();
+        const name = document.getElementById('form-name').value.trim();
+        const email = document.getElementById('form-email').value.trim();
+        const phone = document.getElementById('form-phone').value.trim();
+        const msg = document.getElementById('form-msg').value.trim();
+
+        let text = `¡Hola! Quiero información sobre Xeitia.%0A%0A`;
+        text += `*Nombre:* ${name}%0A`;
+        if (email) text += `*Email:* ${email}%0A`;
+        text += `*Teléfono:* ${phone}%0A`;
+        if (msg) text += `*Mensaje:* ${msg}`;
+
+        window.open(`https://wa.me/34611553428?text=${text}`, '_blank');
+        return false;
+    }
+    </script>
 
     <!-- Footer -->
     <!-- WhatsApp Floating Button -->
